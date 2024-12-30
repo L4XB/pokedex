@@ -10,7 +10,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) => PokemonProvider(),
-      child: MaterialApp(
+      child: const MaterialApp(
         home: HomeScreen(),
       ),
     );

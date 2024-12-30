@@ -44,11 +44,22 @@ class PokemonCard extends StatelessWidget {
               ],
             ),
             Positioned(
+              bottom: -25,
+              right: -25,
+              child: Opacity(
+                opacity: 0.2,
+                child: Image.asset(
+                  "assets/pokeball_background_image.png",
+                  height: 125,
+                ),
+              ),
+            ),
+            Positioned(
               bottom: -30,
               right: -40,
               child: Image.network(
                 item.imageURL,
-                width: 150,
+                width: 140,
               ),
             ),
           ],
