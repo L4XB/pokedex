@@ -7,6 +7,7 @@ environment:
   sdk: ^3.5.3
 
 dependencies:
+  dio: ^5.7.0
   flutter:
     sdk: flutter
   infinite_scroll_pagination: ^4.1.0
