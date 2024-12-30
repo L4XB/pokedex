@@ -14,6 +14,7 @@ class PokemonProvider extends ChangeNotifier {
     if (pokemonGeneralData.isNotEmpty) {
       List<PokemonModel> models =
           await repositorie.getPokemonDataByUrlAndName(pokemonGeneralData);
+
       return models;
     }
     return [];
