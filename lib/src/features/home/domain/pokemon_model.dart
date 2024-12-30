@@ -3,7 +3,7 @@ class PokemonModel {
   final String name;
   final String imageURL;
   final String type;
-  final double weight;
+  final int weight;
 
   PokemonModel(
       {required this.id,

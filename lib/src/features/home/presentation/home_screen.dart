@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/src/features/home/data/repositories/pokemon_repositorie.dart';
 import 'package:pokedex/src/features/home/domain/pokemon_general_informtion_model.dart';
+import 'package:pokedex/src/features/home/domain/pokemon_model.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -16,8 +17,11 @@ class HomeScreen extends StatelessWidget {
                           .getPokemonGeneralInfomrationsWithLimitAndOffset(
                               20, 0) ??
                       [];
-              for (PokemonGeneralInformtionModel model in data) {
-                print(model.name);
+
+              List<PokemonModel> fullData =
+                  await PokemonRepositorie().getPokemonDataByUrlAndName(data);
+              for (PokemonModel model in fullData) {
+                print(model.type);
               }
             },
             child: const Text("Load Data")),
