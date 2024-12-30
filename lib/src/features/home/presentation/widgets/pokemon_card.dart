@@ -8,20 +8,21 @@ class PokemonCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      clipBehavior: Clip.none,
-      children: [
-        Container(
-          width: MediaQuery.of(context).size.width / 2,
-          decoration: BoxDecoration(
-            color: getColorForType(item.type),
-            borderRadius: BorderRadius.circular(15.0),
-            border: Border.all(color: getColorForType(item.type), width: 3),
-          ),
-          margin: const EdgeInsets.all(8.0),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
+    return Container(
+      width: MediaQuery.of(context).size.width / 2,
+      height: MediaQuery.of(context).size.height * 0.15,
+      decoration: BoxDecoration(
+        color: getColorForType(item.type),
+        borderRadius: BorderRadius.circular(15.0),
+        border: Border.all(color: getColorForType(item.type), width: 3),
+      ),
+      margin: const EdgeInsets.all(8.0),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
@@ -32,20 +33,27 @@ class PokemonCard extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
+                const SizedBox(height: 8),
+                Text(
+                  item.type,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    color: Colors.white,
+                  ),
+                ),
               ],
             ),
-          ),
+            Positioned(
+              bottom: -30,
+              right: -40,
+              child: Image.network(
+                item.imageURL,
+                width: 150,
+              ),
+            ),
+          ],
         ),
-        Positioned(
-          bottom: -5,
-          right: -10,
-          child: Image.network(
-            item.imageURL,
-            height: 150,
-            fit: BoxFit.cover,
-          ),
-        ),
-      ],
+      ),
     );
   }
 }
