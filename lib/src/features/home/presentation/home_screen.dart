@@ -53,7 +53,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pokédex'),
+        title: const Text(
+          'Pokédex',
+          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
       ),
       body: PagedGridView<int, PokemonModel>(
         pagingController: _pagingController,
