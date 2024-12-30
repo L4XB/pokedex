@@ -26,12 +26,12 @@ class PokemonCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(
-                  height: 10,
+                  height: 8,
                 ),
                 Text(
                   item.name,
                   style: const TextStyle(
-                    fontSize: 20,
+                    fontSize: 19,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
@@ -66,7 +66,8 @@ class PokemonCard extends StatelessWidget {
                 child: Text(
                   item.id,
                   style: TextStyle(
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w900,
+                      fontSize: 15,
                       color: getColorForType(item.type)),
                 )),
             Positioned(

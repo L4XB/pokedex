@@ -26,6 +26,8 @@ Color getColorForType(String type) {
       return const Color.fromARGB(109, 122, 100, 232).withOpacity(0.7);
     case 'ice':
       return const Color.fromARGB(255, 65, 234, 229).withOpacity(0.7);
+    case 'dark':
+      return const Color.fromARGB(198, 24, 30, 30).withOpacity(0.7);
     default:
       return Colors.grey.withOpacity(0.7);
   }
