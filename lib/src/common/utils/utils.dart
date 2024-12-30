@@ -10,4 +10,20 @@ class Utils {
     }
     return reshapedText;
   }
+
+  String transformIdToRightFormat(String id) {
+    if (id.length == 1) {
+      return "#000$id";
+    }
+    if (id.length == 2) {
+      return "#00$id";
+    }
+    if (id.length == 3) {
+      return "#0$id";
+    }
+    if (id.length == 4) {
+      return "#$id";
+    }
+    return "#0000";
+  }
 }

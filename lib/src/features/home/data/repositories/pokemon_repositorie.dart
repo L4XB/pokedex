@@ -35,7 +35,8 @@ class PokemonRepositorie {
       response = await Dio().get(model.url);
       try {
         if (response.statusCode == 200 || response.statusCode == 201) {
-          String id = response.data["order"].toString();
+          String id =
+              utils.transformIdToRightFormat(response.data["order"].toString());
           String name =
               utils.transformTextToRightShape(response.data["name"].toString());
           String imageURL = response.data["sprites"]["other"]["home"]
