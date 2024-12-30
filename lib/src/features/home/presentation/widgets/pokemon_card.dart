@@ -34,11 +34,26 @@ class PokemonCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 8),
-                Text(
-                  item.type,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    color: Colors.white,
+                Material(
+                  elevation: 3,
+                  color: const Color.fromARGB(0, 255, 255, 255),
+                  borderRadius: BorderRadius.circular(20),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: getColorForType(item.type).withOpacity(0.4),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 2, horizontal: 8),
+                      child: Text(
+                        item.type,
+                        style: const TextStyle(
+                            fontSize: 11,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
                   ),
                 ),
               ],
