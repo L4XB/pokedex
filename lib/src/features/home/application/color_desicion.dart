@@ -10,6 +10,8 @@ Color getColorForType(String type) {
       return const Color.fromARGB(255, 44, 176, 112).withOpacity(0.7);
     case 'electric':
       return const Color.fromARGB(255, 194, 179, 49).withOpacity(0.7);
+    case 'bug':
+      return const Color.fromARGB(255, 122, 194, 74).withOpacity(0.7);
     default:
       return Colors.grey.withOpacity(0.7);
   }
