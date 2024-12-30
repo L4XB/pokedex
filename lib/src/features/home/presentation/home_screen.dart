@@ -1,30 +1,67 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/src/features/home/data/repositories/pokemon_repositorie.dart';
-import 'package:pokedex/src/features/home/domain/pokemon_general_informtion_model.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:pokedex/src/features/home/data/provider/pokemon_provider.dart';
 import 'package:pokedex/src/features/home/domain/pokemon_model.dart';
+import 'package:provider/provider.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  static const _pageSize = 20;
+
+  final PagingController<int, PokemonModel> _pagingController =
+      PagingController(firstPageKey: 0);
+
+  @override
+  void initState() {
+    super.initState();
+    _pagingController.addPageRequestListener((pageKey) {
+      _fetchPage(pageKey);
+    });
+  }
+
+  Future<void> _fetchPage(int pageKey) async {
+    try {
+      final newItems =
+          await Provider.of<PokemonProvider>(context, listen: false)
+              .getPokemons(pageKey, _pageSize);
+      final isLastPage = newItems.length < _pageSize;
+      if (isLastPage) {
+        _pagingController.appendLastPage(newItems);
+      } else {
+        final nextPageKey = pageKey + newItems.length;
+        _pagingController.appendPage(newItems, nextPageKey);
+      }
+    } catch (error) {
+      _pagingController.error = error;
+    }
+  }
+
+  @override
+  void dispose() {
+    _pagingController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: ElevatedButton(
-            onPressed: () async {
-              List<PokemonGeneralInformtionModel> data =
-                  await PokemonRepositorie()
-                          .getPokemonGeneralInfomrationsWithLimitAndOffset(
-                              20, 0) ??
-                      [];
-
-              List<PokemonModel> fullData =
-                  await PokemonRepositorie().getPokemonDataByUrlAndName(data);
-              for (PokemonModel model in fullData) {
-                print(model.type);
-              }
-            },
-            child: const Text("Load Data")),
+      appBar: AppBar(
+        title: const Text('Pokédex'),
+      ),
+      body: PagedListView<int, PokemonModel>(
+        pagingController: _pagingController,
+        builderDelegate: PagedChildBuilderDelegate<PokemonModel>(
+          itemBuilder: (context, item, index) => ListTile(
+            title: Text(item.name),
+            // Weitere Eigenschaften des Pokemon anzeigen
+          ),
+        ),
       ),
     );
   }

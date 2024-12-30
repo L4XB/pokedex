@@ -5,20 +5,17 @@ import 'package:pokedex/src/features/home/domain/pokemon_model.dart';
 
 class PokemonProvider extends ChangeNotifier {
   PokemonRepositorie repositorie = PokemonRepositorie();
-  List<PokemonModel> pokemons = [];
-  int offset = 0;
-  int limit = 20;
 
-  void getPokemons() async {
-    List<PokemonGeneralInformtionModel> pokemonGeneralData = await repositorie
-            .getPokemonGeneralInfomrationsWithLimitAndOffset(limit, offset) ??
-        [];
+  Future<List<PokemonModel>> getPokemons(int pageKey, int pageSize) async {
+    List<PokemonGeneralInformtionModel> pokemonGeneralData =
+        await repositorie.getPokemonGeneralInfomrationsWithLimitAndOffset(
+                pageSize, pageKey) ??
+            [];
     if (pokemonGeneralData.isNotEmpty) {
       List<PokemonModel> models =
           await repositorie.getPokemonDataByUrlAndName(pokemonGeneralData);
-      pokemons.addAll(models);
+      return models;
     }
-
-    notifyListeners();
+    return [];
   }
 }
