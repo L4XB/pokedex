@@ -35,8 +35,9 @@ class PokemonRepositorie {
         if (response.statusCode == 200 || response.statusCode == 201) {
           String id = response.data["order"].toString();
           String name = response.data["name"].toString();
-          String imageURL =
-              response.data["sprites"]["front_default"].toString();
+          String imageURL = response.data["sprites"]["other"]["home"]
+                  ["front_default"]
+              .toString();
           String type = response.data["types"][0]["type"]["name"].toString();
           int weight = response.data["weight"];
           PokemonModel model = PokemonModel(

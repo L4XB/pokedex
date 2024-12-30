@@ -37,8 +37,8 @@ class PokemonCard extends StatelessWidget {
           ),
         ),
         Positioned(
-          bottom: -15,
-          right: -25,
+          bottom: -5,
+          right: -10,
           child: Image.network(
             item.imageURL,
             height: 150,
