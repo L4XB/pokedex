@@ -12,9 +12,9 @@ class PokemonCard extends StatelessWidget {
       width: MediaQuery.of(context).size.width / 2,
       height: MediaQuery.of(context).size.height * 0.15,
       decoration: BoxDecoration(
-        color: getColorForType(item.type),
+        color: getColorForType(item.types[0]),
         borderRadius: BorderRadius.circular(15.0),
-        border: Border.all(color: getColorForType(item.type), width: 3),
+        border: Border.all(color: getColorForType(item.types[0]), width: 3),
       ),
       margin: const EdgeInsets.all(8.0),
       child: Padding(
@@ -36,27 +36,40 @@ class PokemonCard extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
-                const SizedBox(height: 8),
-                Material(
-                  elevation: 1,
-                  color: const Color.fromARGB(103, 255, 255, 255),
-                  borderRadius: BorderRadius.circular(20),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 3, horizontal: 14),
-                      child: Text(
-                        item.type,
-                        style: const TextStyle(
-                            fontSize: 10,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
+                const SizedBox(height: 3),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    for (var element in item.types)
+                      Column(
+                        children: [
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          Material(
+                            elevation: 1,
+                            color: const Color.fromARGB(103, 255, 255, 255),
+                            borderRadius: BorderRadius.circular(20),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 3, horizontal: 14),
+                                child: Text(
+                                  element,
+                                  style: const TextStyle(
+                                      fontSize: 10,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  ),
+                  ],
                 ),
               ],
             ),
@@ -68,7 +81,7 @@ class PokemonCard extends StatelessWidget {
                   style: TextStyle(
                       fontWeight: FontWeight.w900,
                       fontSize: 15,
-                      color: getColorForType(item.type)),
+                      color: getColorForType(item.types[0])),
                 )),
             Positioned(
               bottom: -25,

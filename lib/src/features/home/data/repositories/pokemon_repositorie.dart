@@ -42,14 +42,19 @@ class PokemonRepositorie {
           String imageURL = response.data["sprites"]["other"]["home"]
                   ["front_default"]
               .toString();
-          String type = utils.transformTextToRightShape(
-              response.data["types"][0]["type"]["name"].toString());
+
+          List<String> types = [];
+          for (var element in response.data["types"]) {
+            types.add(utils
+                .transformTextToRightShape(element["type"]["name"].toString()));
+          }
+
           int weight = response.data["weight"];
           PokemonModel model = PokemonModel(
               id: id,
               name: name,
               imageURL: imageURL,
-              type: type,
+              types: types,
               weight: weight);
           pokemonModelsWithData.add(model);
         }

@@ -2,13 +2,13 @@ class PokemonModel {
   final String id;
   final String name;
   final String imageURL;
-  final String type;
+  final List<String> types;
   final int weight;
 
   PokemonModel(
       {required this.id,
       required this.name,
       required this.imageURL,
-      required this.type,
+      required this.types,
       required this.weight});
 }
