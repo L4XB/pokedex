@@ -15,7 +15,6 @@ transform = transforms.Compose([
     transforms.Resize((64, 64)),
     transforms.RandomHorizontalFlip(),
     transforms.RandomRotation(10),
-    transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.2),
     transforms.ToTensor(),
     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 ])
@@ -39,7 +38,7 @@ optimizer = optim.Adam(model.parameters(), lr=0.001)
 scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.1)
 
 # Training loop with early stopping
-num_epochs = 70
+num_epochs = 80
 patience = 10
 best_loss = float('inf')
 early_stop_counter = 0
