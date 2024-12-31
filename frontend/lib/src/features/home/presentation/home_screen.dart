@@ -100,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 centerTitle: true,
                 backgroundColor: Colors.transparent,
                 elevation: 0,
-                leading: const ImagePickerButton(),
+                leading: ImagePickerButton(onResults: _updateSearchResults),
                 actions: [
                   Visibility(
                     visible: !_isSearchBarVisible,

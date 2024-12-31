@@ -30,4 +30,17 @@ class SearchProvider extends ChangeNotifier {
         await repositorie.getPokemonDataByUrlAndName(results);
     return pokeData;
   }
+
+  Future<List<PokemonModel>> searchPokemonThatMatches(
+      String pokemonQuery) async {
+    List<PokemonGeneralInformtionModel> results = [];
+    for (var pokemon in generalPokemonInformations) {
+      if (pokemon.name.toLowerCase() == pokemonQuery.toLowerCase()) {
+        results.add(pokemon);
+      }
+    }
+    List<PokemonModel> pokeData =
+        await repositorie.getPokemonDataByUrlAndName(results);
+    return pokeData;
+  }
 }
