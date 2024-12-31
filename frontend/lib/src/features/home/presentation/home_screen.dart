@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:pokedex/src/features/classification/presentation/image_picker_button.dart';
 import 'package:pokedex/src/features/home/data/provider/pokemon_provider.dart';
 import 'package:pokedex/src/features/home/domain/pokemon_model.dart';
 import 'package:pokedex/src/features/home/presentation/widgets/pokemon_card.dart';
@@ -99,6 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 centerTitle: true,
                 backgroundColor: Colors.transparent,
                 elevation: 0,
+                leading: const ImagePickerButton(),
                 actions: [
                   Visibility(
                     visible: !_isSearchBarVisible,

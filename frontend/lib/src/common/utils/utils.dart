@@ -28,7 +28,7 @@ class Utils {
     return "#0000";
   }
 
-  Future<File?> pickImage() async {
+  Future<File?> pickImageFromGallery() async {
     final ImagePicker picker = ImagePicker();
     final XFile? image = await picker.pickImage(source: ImageSource.gallery);
     if (image != null) {
