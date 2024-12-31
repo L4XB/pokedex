@@ -59,23 +59,59 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Pokédex',
-          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-        ),
-        centerTitle: true,
-      ),
-      body: PagedGridView<int, PokemonModel>(
-        pagingController: _pagingController,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-        ),
-        builderDelegate: PagedChildBuilderDelegate<PokemonModel>(
-          itemBuilder: (context, item, index) => PokemonCard(
-            item: item,
+      body: Stack(
+        children: [
+          Positioned(
+            top: -37,
+            left: 233,
+            child: Image.asset(
+              "assets/pokeball_background_image.png",
+              fit: BoxFit.contain,
+              color: const Color.fromARGB(255, 227, 227, 227).withOpacity(0.5),
+              height: 250,
+            ),
           ),
-        ),
+          Column(
+            children: [
+              AppBar(
+                title: const Text(
+                  'Pokédex',
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                ),
+                centerTitle: true,
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                actions: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: IconButton(
+                      icon: const Icon(
+                        Icons.menu,
+                        size: 28,
+                      ),
+                      onPressed: () {
+                        // Handle menu button press
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              Expanded(
+                child: PagedGridView<int, PokemonModel>(
+                  pagingController: _pagingController,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                  ),
+                  builderDelegate: PagedChildBuilderDelegate<PokemonModel>(
+                    itemBuilder: (context, item, index) => PokemonCard(
+                      item: item,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
