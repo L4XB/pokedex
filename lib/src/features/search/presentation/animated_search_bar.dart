@@ -18,8 +18,9 @@ class AnimatedSearchBar extends StatelessWidget {
       width: isVisible ? MediaQuery.of(context).size.width - 55 : 0,
       height: 50,
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          const Expanded(
+          const Flexible(
             child: SearchBarWidget(),
           ),
           IconButton(
