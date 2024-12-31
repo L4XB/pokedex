@@ -1,3 +1,7 @@
+import 'dart:io';
+
+import 'package:image_picker/image_picker.dart';
+
 class Utils {
   String transformTextToRightShape(String text) {
     String reshapedText = "";
@@ -22,5 +26,15 @@ class Utils {
       return "#$id";
     }
     return "#0000";
+  }
+
+  Future<File?> pickImage() async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      return File(image.path);
+    }
+
+    return null;
   }
 }
