@@ -86,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding: const EdgeInsets.only(right: 10),
                     child: IconButton(
                       icon: const Icon(
-                        Icons.menu,
+                        Icons.search,
                         size: 28,
                       ),
                       onPressed: () {
