@@ -1,6 +1,6 @@
 import os
 from PIL import Image
-from torch.utils.data import Dataset
+from torch.utils.data import Dataset, DataLoader
 
 class PokemonDataset(Dataset):
     def __init__(self, root_dir, transform=None):
@@ -23,7 +23,13 @@ class PokemonDataset(Dataset):
     
     def __getitem__(self, idx):
         img_path = self.images[idx]
-        image = Image.open(img_path).convert('RGB')
+        image = Image.open(img_path)
+        
+        if image.mode == 'P' or (image.mode == 'RGBA' and 'transparency' in image.info):
+            image = image.convert('RGBA')
+        
+        image = image.convert('RGB')
+        
         label = self.labels[idx]
         
         if self.transform:
