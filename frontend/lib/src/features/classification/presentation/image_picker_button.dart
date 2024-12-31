@@ -21,7 +21,6 @@ class ImagePickerButton extends StatelessWidget {
         if (image != null) {
           String classification =
               await ClassificationRepository().classifiyImage(image);
-          print(classification);
           List<PokemonModel> matchedPokemons =
               await provider.searchPokemonThatMatches(classification);
 
@@ -29,8 +28,6 @@ class ImagePickerButton extends StatelessWidget {
         }
       },
       child: Container(
-        width: 30,
-        height: 30,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           gradient: RadialGradient(

@@ -100,7 +100,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 centerTitle: true,
                 backgroundColor: Colors.transparent,
                 elevation: 0,
-                leading: ImagePickerButton(onResults: _updateSearchResults),
+                leading: Padding(
+                  padding: const EdgeInsets.only(left: 15),
+                  child: ImagePickerButton(onResults: _updateSearchResults),
+                ),
                 actions: [
                   Visibility(
                     visible: !_isSearchBarVisible,
@@ -117,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         onPressed: _toggleSearchBar,
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
               Expanded(
