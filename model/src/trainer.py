@@ -39,7 +39,7 @@ optimizer = optim.Adam(model.parameters(), lr=0.001)
 scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.1)
 
 # Training loop with early stopping
-num_epochs = 100
+num_epochs = 70
 patience = 10
 best_loss = float('inf')
 early_stop_counter = 0
@@ -61,17 +61,13 @@ for epoch in range(num_epochs):
     
     # Update learning rate
     scheduler.step()
-    
-    # Early stopping
     if epoch_loss < best_loss:
         best_loss = epoch_loss
-        early_stop_counter = 0
         torch.save(model.state_dict(), 'best_model.pth')
+        early_stop_counter = 0
     else:
         early_stop_counter += 1
-        if early_stop_counter >= patience:
-            print("Early stopping")
-            break
+    
 
 # Load the best model
 model.load_state_dict(torch.load('best_model.pth'))
