@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from model.src.model import Model
 
 # Pfad zum Bild und zum gespeicherten Modell
-image_path = 'model/test/test_data/IMG_3448.jpg'
+image_path = 'model/test/test_data/IMG_3460.jpg'
 model_path = 'model/best_model.pth'
 
 class_names = ['blastoise', 'butterfree', 'charizard', 'dragonite', 'gengar', 'gyarados', 'pikachu', 'rhyhorn', 'slowbro', 'venusaur']
