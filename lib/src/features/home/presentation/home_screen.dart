@@ -3,6 +3,7 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:pokedex/src/features/home/data/provider/pokemon_provider.dart';
 import 'package:pokedex/src/features/home/domain/pokemon_model.dart';
 import 'package:pokedex/src/features/home/presentation/widgets/pokemon_card.dart';
+import 'package:pokedex/src/features/search/data/provider/search_provider.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -21,9 +22,15 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
+
     _pagingController.addPageRequestListener((pageKey) {
       _fetchPage(pageKey);
     });
+    _initSearchProvider();
+  }
+
+  Future<void> _initSearchProvider() async {
+    await Provider.of<SearchProvider>(context, listen: false).initialize();
   }
 
   Future<void> _fetchPage(int pageKey) async {
