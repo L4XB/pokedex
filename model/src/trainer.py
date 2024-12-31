@@ -39,7 +39,7 @@ optimizer = optim.Adam(model.parameters(), lr=0.001)
 scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.1)
 
 # Training loop with early stopping
-num_epochs = 80
+num_epochs = 100
 patience = 10
 best_loss = float('inf')
 early_stop_counter = 0
