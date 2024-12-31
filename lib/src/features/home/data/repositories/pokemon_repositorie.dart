@@ -36,7 +36,7 @@ class PokemonRepositorie {
       try {
         if (response.statusCode == 200 || response.statusCode == 201) {
           String id =
-              utils.transformIdToRightFormat(response.data["order"].toString());
+              utils.transformIdToRightFormat(response.data["id"].toString());
           String name =
               utils.transformTextToRightShape(response.data["name"].toString());
           String imageURL = response.data["sprites"]["other"]["home"]
