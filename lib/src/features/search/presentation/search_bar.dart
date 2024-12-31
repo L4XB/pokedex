@@ -4,7 +4,9 @@ import 'package:pokedex/src/features/search/data/provider/search_provider.dart';
 import 'package:provider/provider.dart';
 
 class SearchBarWidget extends StatelessWidget {
-  const SearchBarWidget({super.key});
+  final Function(List<PokemonModel>) updateSearchResults;
+
+  const SearchBarWidget({super.key, required this.updateSearchResults});
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +29,7 @@ class SearchBarWidget extends StatelessWidget {
           onSubmitted: (query) async {
             List<PokemonModel> searchedPokemon =
                 await provider.searchPokemons(query);
-            for (var model in searchedPokemon) {
-              print(model.name);
-            }
+            updateSearchResults(searchedPokemon);
           },
           decoration: InputDecoration(
             hintText: 'Search...',

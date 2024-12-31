@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/src/features/home/domain/pokemon_model.dart';
 import 'package:pokedex/src/features/search/presentation/search_bar.dart';
 
 class AnimatedSearchBar extends StatelessWidget {
   final bool isVisible;
   final VoidCallback toggleVisibility;
+  final Function(List<PokemonModel>) updateSearchResults;
 
   const AnimatedSearchBar({
     super.key,
     required this.isVisible,
     required this.toggleVisibility,
+    required this.updateSearchResults,
   });
 
   @override
@@ -18,10 +21,11 @@ class AnimatedSearchBar extends StatelessWidget {
       width: isVisible ? MediaQuery.of(context).size.width - 55 : 0,
       height: 50,
       child: Row(
-        mainAxisSize: MainAxisSize.min,
         children: [
-          const Flexible(
-            child: SearchBarWidget(),
+          Expanded(
+            child: SearchBarWidget(
+              updateSearchResults: updateSearchResults,
+            ),
           ),
           IconButton(
             splashColor: Colors.transparent,

@@ -17,6 +17,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   static const _pageSize = 20;
   bool _isSearchBarVisible = false;
+  List<PokemonModel> _searchResults = [];
 
   final PagingController<int, PokemonModel> _pagingController =
       PagingController(firstPageKey: 0);
@@ -55,6 +56,15 @@ class _HomeScreenState extends State<HomeScreen> {
   void _toggleSearchBar() {
     setState(() {
       _isSearchBarVisible = !_isSearchBarVisible;
+      if (!_isSearchBarVisible) {
+        _searchResults = [];
+      }
+    });
+  }
+
+  void _updateSearchResults(List<PokemonModel> results) {
+    setState(() {
+      _searchResults = results;
     });
   }
 
@@ -109,17 +119,32 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               Expanded(
-                child: PagedGridView<int, PokemonModel>(
-                  pagingController: _pagingController,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                  ),
-                  builderDelegate: PagedChildBuilderDelegate<PokemonModel>(
-                    itemBuilder: (context, item, index) => PokemonCard(
-                      item: item,
-                    ),
-                  ),
-                ),
+                child: _searchResults.isEmpty
+                    ? PagedGridView<int, PokemonModel>(
+                        pagingController: _pagingController,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                        ),
+                        builderDelegate:
+                            PagedChildBuilderDelegate<PokemonModel>(
+                          itemBuilder: (context, item, index) => PokemonCard(
+                            item: item,
+                          ),
+                        ),
+                      )
+                    : GridView.builder(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                        ),
+                        itemCount: _searchResults.length,
+                        itemBuilder: (context, index) {
+                          return PokemonCard(
+                            item: _searchResults[index],
+                          );
+                        },
+                      ),
               ),
             ],
           ),
@@ -129,6 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: AnimatedSearchBar(
               isVisible: _isSearchBarVisible,
               toggleVisibility: _toggleSearchBar,
+              updateSearchResults: _updateSearchResults,
             ),
           ),
         ],
