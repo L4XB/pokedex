@@ -69,6 +69,13 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  void _resetSearch() {
+    setState(() {
+      _searchResults = [];
+      _pagingController.refresh();
+    });
+  }
+
   @override
   void dispose() {
     _pagingController.dispose();
@@ -93,9 +100,12 @@ class _HomeScreenState extends State<HomeScreen> {
           Column(
             children: [
               AppBar(
-                title: const Text(
-                  'Pokédex',
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                title: GestureDetector(
+                  onTap: _resetSearch,
+                  child: const Text(
+                    'Pokédex',
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  ),
                 ),
                 centerTitle: true,
                 backgroundColor: Colors.transparent,
