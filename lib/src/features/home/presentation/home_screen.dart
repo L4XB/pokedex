@@ -4,6 +4,7 @@ import 'package:pokedex/src/features/home/data/provider/pokemon_provider.dart';
 import 'package:pokedex/src/features/home/domain/pokemon_model.dart';
 import 'package:pokedex/src/features/home/presentation/widgets/pokemon_card.dart';
 import 'package:pokedex/src/features/search/data/provider/search_provider.dart';
+import 'package:pokedex/src/features/search/presentation/animated_search_bar.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -15,6 +16,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   static const _pageSize = 20;
+  bool _isSearchBarVisible = false;
 
   final PagingController<int, PokemonModel> _pagingController =
       PagingController(firstPageKey: 0);
@@ -50,6 +52,12 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  void _toggleSearchBar() {
+    setState(() {
+      _isSearchBarVisible = !_isSearchBarVisible;
+    });
+  }
+
   @override
   void dispose() {
     _pagingController.dispose();
@@ -82,18 +90,22 @@ class _HomeScreenState extends State<HomeScreen> {
                 backgroundColor: Colors.transparent,
                 elevation: 0,
                 actions: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 10),
-                    child: IconButton(
-                      icon: const Icon(
-                        Icons.search,
-                        size: 28,
+                  Visibility(
+                    visible: !_isSearchBarVisible,
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: IconButton(
+                        splashColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        icon: const Icon(
+                          Icons.search,
+                          size: 28,
+                        ),
+                        onPressed: _toggleSearchBar,
                       ),
-                      onPressed: () {
-                        // Handle menu button press
-                      },
                     ),
-                  ),
+                  )
                 ],
               ),
               Expanded(
@@ -110,6 +122,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ],
+          ),
+          Positioned(
+            top: kToolbarHeight + 5,
+            right: 11,
+            child: AnimatedSearchBar(
+              isVisible: _isSearchBarVisible,
+              toggleVisibility: _toggleSearchBar,
+            ),
           ),
         ],
       ),
