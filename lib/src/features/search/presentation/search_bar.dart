@@ -3,10 +3,28 @@ import 'package:pokedex/src/features/home/domain/pokemon_model.dart';
 import 'package:pokedex/src/features/search/data/provider/search_provider.dart';
 import 'package:provider/provider.dart';
 
-class SearchBarWidget extends StatelessWidget {
+class SearchBarWidget extends StatefulWidget {
   final Function(List<PokemonModel>) updateSearchResults;
 
   const SearchBarWidget({super.key, required this.updateSearchResults});
+
+  @override
+  State<SearchBarWidget> createState() => _SearchBarWidgetState();
+}
+
+class _SearchBarWidgetState extends State<SearchBarWidget> {
+  late TextEditingController controller;
+  @override
+  void initState() {
+    controller = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +44,12 @@ class SearchBarWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: TextField(
+          controller: controller,
           onSubmitted: (query) async {
             List<PokemonModel> searchedPokemon =
                 await provider.searchPokemons(query);
-            updateSearchResults(searchedPokemon);
+            widget.updateSearchResults(searchedPokemon);
+            controller.clear();
           },
           decoration: InputDecoration(
             hintText: 'Search...',
