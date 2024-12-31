@@ -35,7 +35,7 @@ class Model(nn.Module):
         x = self.pool(F.relu(self.bn4(self.conv4(x))))
         x = self.pool(F.relu(self.bn5(self.conv5(x))))
         
-        x = x.view(-1, 512 * 2 * 2)  # Flatten the tensor
+        x = x.view(-1, 512 * 2 * 2) 
         x = F.relu(self.fc1(x))
         x = self.dropout1(x)
         x = F.relu(self.fc2(x))
