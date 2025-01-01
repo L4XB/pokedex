@@ -108,8 +108,9 @@ The project includes various assets such as images and videos to enhance the use
   Your browser does not support the video tag.
 </video>
 
+### User Interface
+<img src="assets/demo_ui.png" alt="User Interface" width="320">
+
 ### Search Feature
 <img src="assets/demo_search.png" alt="Search Feature" width="320">
 
-### User Interface
-<img src="assets/demo_ui.png" alt="User Interface" width="320">
