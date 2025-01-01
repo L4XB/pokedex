@@ -103,10 +103,8 @@ The project includes various assets such as images and videos to enhance the use
 ![Model Training](model/training.png)
 
 ### Classification Feature
-<video width="320" height="240" controls>
-  <source src="assets/demo_classification_feature.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+https://github.com/user-attachments/assets/92826b8f-90ee-4e2a-a133-e44f47372971
+
 
 ### User Interface
 <img src="assets/demo_ui.png" alt="User Interface" width="320">
