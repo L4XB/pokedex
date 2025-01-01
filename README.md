@@ -14,7 +14,7 @@ This project is a Pokedex application with a Flutter frontend, a Django backend,
 
 The Pokedex project consists of three main components:
 1. **Frontend**: Built with Flutter, providing a user-friendly interface for searching and displaying Pokemon information.
-2. **Backend**: Implemented with Django, handling API requests and serving the model predictions.
+2. **Backend****: Implemented with Django, handling API requests and serving the model predictions.
 3. **Model**: A PyTorch model trained to classify images of Pokemon.
 
 Currently, the model is trained to recognize the following Pokemon:
@@ -103,10 +103,13 @@ The project includes various assets such as images and videos to enhance the use
 ![Model Training](model/training.png)
 
 ### Classification Feature
-![Classification Feature](assets/demo_classification_feature.mp4)
+<video width="320" height="240" controls>
+  <source src="assets/demo_classification_feature.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ### Search Feature
-![Search Feature](assets/demo_search.png)
+<img src="assets/demo_search.png" alt="Search Feature" width="320">
 
 ### User Interface
-![User Interface](assets/demo_ui.png)
+<img src="assets/demo_ui.png" alt="User Interface" width="320">
