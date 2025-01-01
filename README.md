@@ -97,8 +97,6 @@ Currently, the model is trained to recognize the following Pokemon:
 
 ## Assets
 
-The project includes various assets such as images and videos to enhance the user experience in the Flutter application.
-
 ### Model Training
 ![Model Training](model/training.png)
 
