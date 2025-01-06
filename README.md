@@ -93,7 +93,7 @@ Currently, the model is trained to recognize the following Pokemon:
 ## Acknowledgements
 
 - This project uses data from the [OpenPokeApi](https://pokeapi.co/).
-- Special thanks to the contributors of the OpenPokeApi for providing a comprehensive Pokemon database.
+- Many thanks to the contributors of the OpenPokeApi for providing a comprehensive Pokemon database.
 
 ## Assets
 
