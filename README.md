@@ -17,7 +17,7 @@ The Pokedex project consists of three main components:
 2. **Backend**: Implemented with Django, handling API requests and serving the model predictions.
 3. **Model**: A PyTorch model trained to classify images of Pokemon.
 
-Currently, the model is trained to recognize the following Pokemon:
+Currently, the model is trained to recognize the following Pokemon: 
 - Blastoise
 - Charizard
 - Butterfree
