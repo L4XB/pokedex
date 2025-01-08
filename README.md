@@ -19,8 +19,8 @@ The Pokedex project consists of three main components:
 
 Currently, the model is trained to recognize the following Pokemon:
 - Blastoise
-- Butterfree
 - Charizard
+- Butterfree
 - Dragonite
 - Gengar
 - Gyarados
