@@ -19,7 +19,7 @@ class Model(nn.Module):
         self.bn5 = nn.BatchNorm2d(512)
         
         # Max pooling layer
-        self.pool = nn.MaxPool2d(kernel_size=2, stride=2, padding=0)
+        self.pool = nn.MaxPool2d(kernel_size = 2, stride = 2, padding = 0)
         
         # Fully connected layers with Dropout
         self.fc1 = nn.Linear(512 * 2 * 2, 512)
