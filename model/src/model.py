@@ -13,7 +13,7 @@ class Model(nn.Module):
         self.bn2 = nn.BatchNorm2d(64)
         self.conv3 = nn.Conv2d(in_channels = 64, out_channels = 128, kernel_size = 3, padding = 1)
         self.bn3 = nn.BatchNorm2d(128)
-        self.conv4 = nn.Conv2d(in_channels=128, out_channels=256, kernel_size=3, padding=1)
+        self.conv4 = nn.Conv2d(in_channels = 128, out_channels = 256, kernel_size = 3, padding = 1)
         self.bn4 = nn.BatchNorm2d(256)
         self.conv5 = nn.Conv2d(in_channels=256, out_channels=512, kernel_size=3, padding=1)
         self.bn5 = nn.BatchNorm2d(512)
