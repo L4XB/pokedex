@@ -2,7 +2,6 @@
 
 This project is a Pokedex application with a Flutter frontend, a Django backend, and a PyTorch model for Pokemon classification. The application allows users to classify images of Pokemon and retrieve detailed information about them.
 
-
 ## Table of Contents
 - [Overview](#overview)
 - [Features](#features)
